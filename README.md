@@ -26,6 +26,7 @@
   - VENTA: cierra la posición si la abrió esa estrategia y cancela su stop. VIGILAR: nada.
   - Registro de lo enviado en `resultados/paper/diario.csv`.
 - Claves en variables de entorno, nunca en archivos: `export ALPACA_API_KEY=...` y `export ALPACA_SECRET_KEY=...`
+- En el entorno de Claude las claves van como secreto de red en el proxy: ejecutar con `ALPACA_CLAVES_EN_PROXY=1`.
 - `python paper_trading.py` (simulacro sin claves) · `--cuenta` (lee la cuenta, no envía) · `--enviar` · `--estado` · `--estrategias cruce_medias`
 - Flujo diario, tras el cierre: `python escaner.py && python paper_trading.py --enviar`
 - La estrategia `retroceso_ma200` no está validada con backtest.

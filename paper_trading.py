@@ -140,7 +140,10 @@ def cliente():
 
     key, secret = os.environ.get("ALPACA_API_KEY"), os.environ.get("ALPACA_SECRET_KEY")
     if not key or not secret:
-        raise SystemExit("Faltan ALPACA_API_KEY y ALPACA_SECRET_KEY en el entorno (claves de la cuenta paper).")
+        if not os.environ.get("ALPACA_CLAVES_EN_PROXY"):
+            raise SystemExit("Faltan ALPACA_API_KEY y ALPACA_SECRET_KEY en el entorno (claves de la cuenta paper).")
+        # En el entorno de Claude las claves las añade el proxy (secreto de red); estas no se usan.
+        key, secret = "proxy", "proxy"
     c = TradingClient(key, secret, paper=True)
     if "paper" not in str(getattr(c, "_base_url", "")).lower():
         raise SystemExit("Seguridad: el cliente no apunta a la cuenta paper. No se envía nada.")
