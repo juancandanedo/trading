@@ -30,3 +30,14 @@
 - `python paper_trading.py` (simulacro sin claves) · `--cuenta` (lee la cuenta, no envía) · `--enviar` · `--estado` · `--estrategias cruce_medias`
 - Flujo diario, tras el cierre: `python escaner.py && python paper_trading.py --enviar`
 - La estrategia `retroceso_ma200` no está validada con backtest.
+
+## Avisos por WhatsApp
+- `alertas.py` envía mensajes a tu propio WhatsApp con CallMeBot (gratis).
+- Activación: guarda el número de CallMeBot (ver https://www.callmebot.com/blog/free-api-whatsapp-messages/), envíale "I allow callmebot to send me messages" y te responde con tu apikey. Define las variables de entorno `CALLMEBOT_PHONE` (con prefijo, p. ej. +34600111222) y `CALLMEBOT_APIKEY`. No las guardes en archivos del proyecto.
+- Prueba: `python alertas.py "hola"`.
+- `escaner.py` avisa cuando hay COMPRA o VENTA; `paper_trading.py --enviar` avisa de las órdenes enviadas y de los errores. Ambos aceptan `--sin-whatsapp`. Sin las variables no se envía nada.
+
+## Panel de la cuenta paper
+- `panel.py`: lee la cuenta paper de Alpaca (solo lectura) y `resultados/paper/diario.csv` y genera `resultados/paper/panel.html`, una página que se abre en el navegador con capital, ganancia total y del día, efectivo, P/G abierta y cerrada, evolución del capital, posiciones (con su stop y estrategia), órdenes abiertas, ejecuciones y órdenes enviadas por la rutina.
+- `python panel.py` · `--periodo 3M` (periodo del gráfico) · `--salida otro.html`. Mismas claves que `paper_trading.py` (`ALPACA_CLAVES_EN_PROXY=1` en el entorno de Claude).
+- Versión publicada: https://claude.ai/artifact/B5EVFcgjGFTFkjWTMyh4GB (se actualiza volviendo a publicar `resultados/paper/panel.html`).
