@@ -41,3 +41,8 @@
 - `panel.py`: lee la cuenta paper de Alpaca (solo lectura) y `resultados/paper/diario.csv` y genera `resultados/paper/panel.html`, una página que se abre en el navegador con capital, ganancia total y del día, efectivo, P/G abierta y cerrada, evolución del capital, posiciones (con su stop y estrategia), órdenes abiertas, ejecuciones y órdenes enviadas por la rutina.
 - `python panel.py` · `--periodo 3M` (periodo del gráfico) · `--salida otro.html`. Mismas claves que `paper_trading.py` (`ALPACA_CLAVES_EN_PROXY=1` en el entorno de Claude).
 - Versión publicada: https://claude.ai/artifact/B5EVFcgjGFTFkjWTMyh4GB (se actualiza volviendo a publicar `resultados/paper/panel.html`).
+
+## Gráficos tipo TradingView
+- `graficos.py`: genera `resultados/graficos.html` con velas diarias/semanales de los activos de `data/` (librería Lightweight Charts de TradingView), SMA 20/50/200, volumen, RSI(14), señales del escáner, órdenes paper y, opcional, operaciones del backtest de retrocesos. Zoom con la rueda, arrastrar para mover.
+- `python descargar_datos.py --actualizar && python graficos.py` · `python graficos.py NVDA AAPL`
+- Versión publicada: https://claude.ai/artifact/8cko253ZX97yzeXEXm5j5a
